@@ -5,15 +5,15 @@ const patients = [];
 
 function addPatient() {
   console.log("estas haciendo click");
-  const name = document.getElementsByName("name").value;
+  const name = document.getElementById("name").value;
   const gender = document.querySelector('input[name="gender"]:checked');
   const age = document.getElementById("age").value;
   const condition = document.getElementById("condition").value;
 
   if (name && gender && age && condition) {
     patients.push({ name, gender: gender.value, age, condition });
-    resetForm();
     generateReport();
+    resetForm();
   }
 }
 
@@ -49,19 +49,27 @@ function generateReport() {
     genderConditionsCount[patient.gender][patient.condition]++;
   }
 
-  report.innerHTML = `Number of patients: ${numPatients}<br><br>`;
-  report.innerHTML += `Conditions Breakdown:<br>`;
+  /**
+   * createElement
+   *
+   */
+  const fragment = document.createDocumentFragment();
+  let innerHTML = "";
+  innerHTML = `Number of patients: ${numPatients}<br><br>`;
+  innerHTML += `Conditions Breakdown:<br>`;
   for (const condition in conditionsCount) {
-    report.innerHTML += `${condition}: ${conditionsCount[condition]}<br>`;
+    innerHTML += `${condition}: ${conditionsCount[condition]}<br>`;
   }
 
-  report.innerHTML += `<br>Gender-Based Conditions:<br>`;
+  innerHTML += `<br>Gender-Based Conditions:<br>`;
   for (const gender in genderConditionsCount) {
-    report.innerHTML += `${gender}:<br>`;
+    innerHTML += `${gender}:<br>`;
     for (const condition in genderConditionsCount[gender]) {
-      report.innerHTML += `&nbsp;&nbsp;${condition}: ${genderConditionsCount[gender][condition]}<br>`;
+      innerHTML += `&nbsp;&nbsp;${condition}: ${genderConditionsCount[gender][condition]}<br>`;
     }
   }
+  console.log(innerHTML);
+  report.innerHTML = innerHTML;
 }
 
 addPatientButton.addEventListener("click", addPatient);

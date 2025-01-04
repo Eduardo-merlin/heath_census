@@ -90,3 +90,7 @@ h2 {
   width: 200px;
   height: 100px;
 }
+
+.report-header {
+  border: 1px solid red;
+}

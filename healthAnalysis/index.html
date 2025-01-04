@@ -16,6 +16,7 @@
 
 </ul>
 </nav>
+
 <div class="container">
 <div class="analysisForm">
 <h1>Análisis de Datos de Salud</h1>
@@ -34,22 +35,27 @@
 <label for="age">Edad:</label>
 <input type="number" id="age">
 </div>
+
 <div>
 <label for="condition">Condición:</label>
 <select id="condition">
   <option value="">Seleccionar condición</option>
   <option value="Diabetes">Diabetes</option>
-  <option value="Tiroides">Tiroides</option>
-  <option value="Presión Arterial Alta">Presión Arterial Alta</option>
+  <option value="Thyroid">Tiroides</option>
+  <option value="High Blood Pressure">Presión Arterial Alta</option>
 </select>
 </div>
+
 <button id="addPatient">Agregar Paciente</button>
 <h2>Informe de Análisis</h2>
+
 <div id="report"></div>
 </div>
+
 <div class="searchCondition">
     <div id="result"></div>
 </div>
+
 </div>
 <script src="./health_analysis.js"></script>
 </body>
